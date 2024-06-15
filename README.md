@@ -9,13 +9,13 @@ Before getting started, make sure you have the following installed on your machi
 
 ## Step 1: Install Dependency
 
-Next, navigate to the project directory then install development dependency by running:
+navigate to the project directory then install development dependency by running:
 
 ```bash
 npm install
 ```
 
-## Step 5: Start the development server
+## Step 2: Start the development server
 
 To start the development server, run the following command:
 
@@ -23,17 +23,17 @@ To start the development server, run the following command:
 npm run dev
 ```
 
-This will launch your React application using Vite.
+This will launch the application with development mode
 
-## Step 6: Build and deploy
+## Step 3: Build and deploy
 
-When you're ready to build your React application for production, run the following command:
+Or run for production, run the following command:
 
 ```bash
 npm run build
 ```
 
-This will create an optimized build of your application in the `build` directory.
+This will create an optimized build of the application in the `build` directory.
 
 To preview the production build locally, run the following command:
 
