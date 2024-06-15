@@ -32,9 +32,6 @@ const LoginPage = () => {
         },
       });
 
-      localStorage.setItem("tokenType", response.data.token_type);
-      localStorage.setItem("accessToken", response.data.access_token);
-
       useAuth.login(response.data.access_token, response.data.token_type);
       router.navigate("/wallet");
     } catch (error) {
@@ -59,7 +56,7 @@ const LoginPage = () => {
             p: 4,
           }}
         >
-          <img src={Logo} alt="logo" className="mb-5 w-full p-4" />
+          <img src={Logo} alt="logo" className="mb-12 w-auto p-4" />
 
           <form onSubmit={handleSubmit} className="text-center w-3/4 mx-auto">
             <div className="mb-4">

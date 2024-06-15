@@ -31,7 +31,6 @@ export default function ElevateAppBar(props) {
         <AppBar
           sx={{
             bgcolor: "#fff",
-            boxShadow: "2",
           }}
         >
           <Toolbar>

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ElevateAppBar from "../components/NavigationBar";
-import WalletSection from "../components/WalletSection";
+import WalletSection from "../components/Wallet/WalletSection";
 import BottomNav from "../components/BottomNavigation";
 import { CustomCarousel } from "../components/CustomCarousel";
 import axios from "axios";
+import useAuthStore from "../store/useAuthStore";
 
 const WalletPage = () => {
   const [data, setData] = useState([]);
-
-  const tokenType = localStorage.getItem("tokenType");
-  const accessToken = localStorage.getItem("accessToken");
+  const { tokenType, accessToken } = useAuthStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +36,7 @@ const WalletPage = () => {
         <CustomCarousel data={data.banner} />
       </div>
 
-      <div className="p-12">
+      <div className="md:p-12">
         <div className="bottom-navigation fixed bottom-0 left-0 right-0 bg-white w-full shadow-md">
           <BottomNav navValue={0} />
         </div>

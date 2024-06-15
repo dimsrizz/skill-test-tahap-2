@@ -21,7 +21,7 @@ export function QrCodeDialog({ open, handleOpen }) {
           <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=HelloWorld"
             alt="QR Code"
-            className="w-2/4 h-3/4"
+            className="w-52 h-52"
           />
         </div>
       </Dialog>

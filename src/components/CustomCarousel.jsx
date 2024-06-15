@@ -3,7 +3,7 @@ import { Carousel } from "@material-tailwind/react";
 export function CustomCarousel({ data }) {
   return (
     <Carousel
-      children
+      children={true}
       autoplay
       loop
       autoplayDelay={2000}

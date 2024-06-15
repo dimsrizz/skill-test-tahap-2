@@ -18,8 +18,6 @@ export default function MenuBookList() {
           },
         });
 
-        console.log("res", res.data.result);
-
         setCategories(() => {
           return res.data.result.categories.map((item) => item.category_name);
         });
@@ -32,8 +30,6 @@ export default function MenuBookList() {
 
     fetchData();
   }, [tokenType, accessToken]);
-
-  console.log("data", data);
 
   return (
     <div className="p-4">

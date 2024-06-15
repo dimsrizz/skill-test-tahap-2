@@ -1,14 +1,45 @@
 import React, { useEffect, useState } from "react";
-import MenuBookTabs from "../components/MenuBookTabs";
-import MenuBookList from "../components/MenuBookList";
+import MenuBookTabs from "../components/MenuBook/MenuBookTabs";
+import MenuBookList from "../components/MenuBook/MenuBookList";
 import BottomNav from "../components/BottomNavigation";
 import axios from "axios";
+import useAuthStore from "../store/useAuthStore";
+
+const dummyData = {
+  categories: [
+    {
+      category_name: "Makanan",
+      items: [
+        {
+          item_name: "Nasi Goreng",
+          item_price: 15000,
+        },
+        {
+          item_name: "Mie Goreng",
+          item_price: 15000,
+        },
+      ],
+    },
+    {
+      category_name: "Minuman",
+      items: [
+        {
+          item_name: "Es Teh",
+          item_price: 5000,
+        },
+        {
+          item_name: "Es Jeruk",
+          item_price: 5000,
+        },
+      ],
+    },
+  ],
+};
 
 const MenuBook = () => {
-  const tokenType = localStorage.getItem("tokenType");
-  const accessToken = localStorage.getItem("accessToken");
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState([]);
+  const { tokenType, accessToken } = useAuthStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +69,7 @@ const MenuBook = () => {
         </div>
       </div>
       <div className="content">
-        <MenuBookList data={data} />
+        <MenuBookList data={dummyData} />
       </div>
 
       <div className="bottom-navigation fixed bottom-0 left-0 right-0 bg-white w-full shadow-md">
