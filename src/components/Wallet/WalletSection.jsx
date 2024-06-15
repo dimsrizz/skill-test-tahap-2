@@ -23,7 +23,7 @@ const WalletSection = ({ data }) => {
         <Box className="w-full h-full p-6">
           <Box className="bg-white bg-opacity-80 p-8 rounded-lg shadow">
             <div>
-              <h1 className=" text-lg">{data.greeting},</h1>
+              <h1 className="text-lg">{data.greeting},</h1>
               <h2 className="font-bold text-lg">{data.name}</h2>
             </div>
             <div className="flex justify-between items-center py-2">
@@ -36,9 +36,9 @@ const WalletSection = ({ data }) => {
                   {/* (404 Not Found) */}
                   {/* <QRCode url={data.qrcode} /> */}
                 </div>
-                <div className="mx-4 border-dotted border-r-2 border-gray-300 h-20"></div>{" "}
+                <div className="sm:mx-4 md:mx-4 border-dotted border-r-2 border-gray-300 h-20"></div>{" "}
                 {/* Separator line */}
-                <div className="ml-4">
+                <div className="lg:ml-4">
                   <p className="text-gray-600 text-md">Saldo</p>
                   <p className="text-gray-600 text-md">Points</p>
                 </div>
