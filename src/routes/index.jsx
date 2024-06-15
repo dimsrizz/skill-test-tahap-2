@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     element: <WalletPage />,
   },
   {
-    path: "/menus",
+    path: "/menu",
     element: <MenuBook />,
   },
 ]);

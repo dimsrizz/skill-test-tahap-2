@@ -6,8 +6,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 
-export default function BottomNav() {
-  const [value, setValue] = React.useState(0);
+export default function BottomNav({ navValue }) {
+  const [value, setValue] = React.useState(navValue);
   const navigate = useNavigate();
 
   return (
@@ -31,7 +31,7 @@ export default function BottomNav() {
           label="Menu"
           icon={<MenuIcon />}
           onClick={() => {
-            navigate("/menus");
+            navigate("/menu");
           }}
         />
       </BottomNavigation>

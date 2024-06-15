@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-export default function MenuBookTabs() {
+export default function MenuBookTabs({ data }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -18,13 +18,9 @@ export default function MenuBookTabs() {
         variant="scrollable"
         aria-label="scrollable auto tabs example"
       >
-        <Tab label="Seasonal Product" />
-        <Tab label="Best Seller" />
-        <Tab label="Coffee" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+        {data.map((item, index) => (
+          <Tab key={index} label={item} />
+        ))}
       </Tabs>
     </Box>
   );

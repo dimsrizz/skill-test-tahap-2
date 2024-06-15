@@ -1,36 +1,79 @@
-import React from "react";
+// src/components/Menu.js
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-function MenuBookList() {
+export default function MenuBookList() {
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const tokenType = localStorage.getItem("tokenType");
+  const accessToken = localStorage.getItem("accessToken");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.post("/api/menu", null, {
+          headers: {
+            Authorization: `${tokenType} ${accessToken}`,
+          },
+        });
+
+        console.log("res", res.data.result);
+
+        setCategories(() => {
+          return res.data.result.categories.map((item) => item.category_name);
+        });
+
+        setData(() => res.data.result.categories);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData();
+  }, [tokenType, accessToken]);
+
+  console.log("data", data);
+
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Seasonal Product</h2>
-      <div className="grid grid-cols-1 ">
-        <div className="bg-white shadow-md p-4">
-          <h3 className="text-xl font-bold mb-2">Raisin Delight Frappe</h3>
-          <p className="text-gray-600">
-            A timeless classic. A sweet, creamy, rich, flavorful experience of
-            vanilla cream and juicy ripe raisins with a hint of warmth.
-          </p>
-          <span className="font-bold text-lg">50.000</span>
-        </div>
-        <div className="bg-white shadow-md p-4">
-          <h3 className="text-xl font-bold mb-2">Green Tea Latte</h3>
-          <p className="text-gray-600">
-            A perfect combination between special green tea and fresh milk.
-          </p>
-          <span className="font-bold text-lg">47.000</span>
-        </div>
-        <div className="bg-white shadow-md p-4">
-          <h3 className="text-xl font-bold mb-2">Malaka Brulee Latte</h3>
-          <p className="text-gray-600">
-            A Caffe Latte packed with a rich and intense Melaka brown sugar
-            flavor with a creamier custardy flavor and body.
-          </p>
-          <span className="font-bold text-lg">40.000</span>
-        </div>
-      </div>
+    <div className="p-4">
+      {data.length > 0 ? (
+        data.map((category, index) => (
+          <div key={index} className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">
+              {category.category_name}
+            </h2>
+            <div>
+              {category.menu &&
+                category.menu.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-4 bg-white mb-1"
+                  >
+                    <div className="flex items-center">
+                      <img
+                        src={item.photo}
+                        alt={item.name}
+                        className="w-16 h-16 rounded object-cover mr-4"
+                      />
+                      <div>
+                        <h3 className="text-lg font-bold">{item.name}</h3>
+                        <p className="text-gray-600">{item.description}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xl font-bold">
+                        {item.price && item.price.toLocaleString("id-ID")}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
-
-export default MenuBookList;

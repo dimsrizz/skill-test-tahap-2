@@ -3,8 +3,6 @@ import ElevateAppBar from "../components/NavigationBar";
 import WalletSection from "../components/WalletSection";
 import BottomNav from "../components/BottomNavigation";
 import { CustomCarousel } from "../components/CustomCarousel";
-import CustomDrawer from "../components/CustomDrawer";
-import useAuthStore from "../store/useAuthStore";
 import axios from "axios";
 
 const WalletPage = () => {
@@ -21,8 +19,6 @@ const WalletPage = () => {
         },
       });
 
-      console.log(res.data.result);
-
       setData(res.data.result);
     };
 
@@ -37,12 +33,14 @@ const WalletPage = () => {
       <div className="wallet-page">
         <WalletSection data={data} />
       </div>
-      <div className="carousel w-full lg:h-3/5">
+      <div className="carousel w-auto lg:h-auto lg:px-6">
         <CustomCarousel data={data.banner} />
       </div>
 
-      <div className="bottom-navigation fixed bottom-0 left-0 right-0 bg-white w-full shadow-md">
-        <BottomNav />
+      <div className="p-12">
+        <div className="bottom-navigation fixed bottom-0 left-0 right-0 bg-white w-full shadow-md">
+          <BottomNav navValue={0} />
+        </div>
       </div>
     </div>
   );
